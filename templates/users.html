@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Elite Lab Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Elite Lab Solutions" />
+    <meta name="author" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/images/favicon.ico') }}">
+
+    <!-- App css -->
+    <link href="{{ url_for('static', filename='assets/css/app.min.css') }}" rel="stylesheet" type="text/css"
+        id="app-style" />
+    <link href="{{ url_for('static', filename='assets/css/app.css') }}" rel="stylesheet" type="text/css"
+        id="app-style" />
+
+    <!-- Icons -->
+    <link href="{{ url_for('static', filename='assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<!-- body start -->
+
+<body data-menu-color="light" data-sidebar="default">
+
+    <div id="app-layout">
+
+
+        <!-- Topbar Start -->
+        <div class="topbar-custom">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between">
+                    <ul class="list-unstyled topnav-menu mb-0 d-flex align-items-center">
+                        <li>
+                            <button class="button-toggle-menu nav-link">
+                                <i data-feather="menu" class="noti-icon"></i>
+                            </button>
+                        </li>
+                        <li class="d-none d-lg-block">
+                            <h5 class="mb-0">Good Morning, {{session['user_name'] }}</h5>
+                        </li>
+                    </ul>
+
+                    <ul class="list-unstyled topnav-menu mb-0 d-flex align-items-center">
+
+
+
+                        <li class="d-none d-sm-flex">
+                            <button type="button" class="btn nav-link" data-toggle="fullscreen">
+                                <i data-feather="maximize" class="align-middle fullscreen noti-icon"></i>
+                            </button>
+                        </li>
+
+
+                        <li class="dropdown notification-list topbar-dropdown">
+                            <a class="nav-link dropdown-toggle nav-user me-0" data-bs-toggle="dropdown" href="#"
+                                role="button" aria-haspopup="false" aria-expanded="false">
+                                <img src="{{ url_for('static', filename='assets/images/users/user-5.jpg') }}"
+                                    alt="user-image" class="rounded-circle">
+                                <span class="pro-user-name ms-1">
+                                    {{session['user_name'] }} <i class="mdi mdi-chevron-down"></i>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
+                                <!-- item-->
+                                <div class="dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                </div>
+
+                                <!-- item-->
+                                <a href="#" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-account-circle-outline fs-16 align-middle"></i>
+                                    <span>My Account</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="#" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-lock-outline fs-16 align-middle"></i>
+                                    <span>Lock Screen</span>
+                                </a>
+
+                                <div class="dropdown-divider"></div>
+
+                                <!-- item-->
+                                <a href="/login" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-location-exit fs-16 align-middle"></i>
+                                    <span>Logout</span>
+                                </a>
+
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- end Topbar -->
+
+        <!-- Left Sidebar Start -->
+        <div class="app-sidebar-menu">
+            <div class="h-100" data-simplebar>
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+
+                    <div class="logo-box">
+                        <a href="index.html" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="{{ url_for('static', filename='assets/images/logo-sm.png') }}" alt=""
+                                    height="22">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="{{ url_for('static', filename='assets/images/logo-light.png') }}" alt=""
+                                    height="24">
+                            </span>
+                        </a>
+                        <a href="index.html" class="logo logo-dark">
+                            <span class="logo-sm">
+                                <img src="{{ url_for('static', filename='assets/images/logo-sm.png') }}" alt=""
+                                    height="22">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="{{ url_for('static', filename='assets/images/logo-dark.png') }}" alt=""
+                                    height="24">
+                            </span>
+                        </a>
+                    </div>
+
+                    <ul id="side-menu">
+
+
+
+                        <li>
+                            <a href="/">
+                                <i data-feather="home"></i>
+                                <span> Dashboard </span>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+                            <a href="#" data-bs-toggle="collapse">
+                                <i data-feather="users"></i>
+                                <span> Schedule </span>
+
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="/analytics">
+                                <i data-feather="alert-octagon"></i>
+                                <span> Analytics </span>
+
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="#sidebarIcons" data-bs-toggle="collapse">
+                                <i data-feather="award"></i>
+                                <span> Patient </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarIcons">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="/patient" class="tp-link">Patient List</a>
+                                    </li>
+                                    <li>
+                                        <a href="/addpatient" class="tp-link">Add Patient</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <a href="#" class="tp-link">
+                                <i data-feather="columns"></i>
+                                <span> Invoice(s)
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="tp-link">
+                                <i data-feather="map-pin"></i>
+                                <span> Support </span>
+                            </a>
+                        </li>
+
+
+
+
+
+                        <li>
+
+                            <a href="#sidebarIconss" data-bs-toggle="collapse">
+                                <i data-feather="package"></i>
+                                <span> Settings </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarIconss">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="/users" class="tp-link">Users</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+
+
+                    </ul>
+
+                </div>
+                <!-- End Sidebar -->
+
+                <div class="clearfix"></div>
+
+            </div>
+        </div>
+
+
+        <div class="content-page">
+            <div class="content">
+
+                <!-- Start Content -->
+                <div class="container-fluid">
+                    <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
+                        <div class="flex-grow-1">
+                            <h4 class="fs-18 fw-semibold m-0">User Details</h4>
+                        </div>
+
+                        <div class="text-end">
+                            <ol class="breadcrumb m-0 py-0">
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">Settings</a></li>
+                                <li class="breadcrumb-item active">Users</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <!-- Display flash messages -->
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    <ul>
+                        {% for category, message in messages %}
+                        <li class="alert alert-{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
+                    <!-- General Form -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title mb-0">Users</h5>
+                                </div><!-- end card header -->
+
+                                <div class="card-body">
+
+                                    <form method="POST" action="{{ url_for('users') }}">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="simpleinput" class="form-label">Name</label>
+                                                    <input type="text" id="simpleinput" name="name" class="form-control"
+                                                        required>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="example-email" class="form-label">Email</label>
+                                                    <input type="email" id="example-email" name="email"
+                                                        class="form-control" placeholder="Email" required>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="example-password" class="form-label">Password</label>
+                                                    <input type="password" id="example-password" name="password"
+                                                        class="form-control" value="password" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <div class="mb-3">
+                                                    <label for="example-select" class="form-label">Sex</label>
+                                                    <select class="form-select" id="example-select" name="sex" required>
+                                                        <option>Male</option>
+                                                        <option>Female</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="example-select" class="form-label">Role</label>
+                                                    <select class="form-select" id="example-select" name="role"
+                                                        required>
+                                                        <option>Admin</option>
+                                                        <option>Staff</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="example-date" class="form-label">Date</label>
+                                                    <input type="date" id="example-date" name="date"
+                                                        class="form-control" required>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <label for="example-palaceholder" class="form-label">Phone
+                                                        number</label>
+                                                    <input type="text" id="example-palaceholder" name="phone_number"
+                                                        class="form-control" placeholder="Phone number" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Content -->
+
+
+            </div> <!-- content -->
+
+
+        </div>
+    </div>
+    <!-- Vendor JS -->
+    <script src="{{ url_for('static', filename='assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/feather-icons/feather.min.js') }}"></script>
+
+    <!-- Datatables JS -->
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='assets/libs/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='assets/libs/datatables.net-keytable-bs5/js/keyTable.bootstrap5.min.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+    <script
+        src="{{ url_for('static', filename='assets/libs/datatables.net-select-bs5/js/select.bootstrap5.min.js') }}"></script>
+
+    <!-- Datatable Demo App JS -->
+    <script src="{{ url_for('static', filename='assets/js/pages/datatable.init.js') }}"></script>
+
+    <!-- Apexcharts JS -->
+    <script src="{{ url_for('static', filename='assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="https://apexcharts.com/samples/assets/stock-prices.js) }}"></script>
+
+    <!-- Widgets Init JS -->
+    <script src="{{ url_for('static', filename='assets/js/pages/analytics-dashboard.init.js') }}"></script>
+
+    <!-- App JS -->
+    <script src="{{ url_for('static', filename='assets/js/app.js') }}"></script>
+</body>
+
+</html>

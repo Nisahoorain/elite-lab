@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Elite Lab Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Elite Lab Solutions" />
+    <meta name="author" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/images/favicon.ico') }}">
+
+    <!-- App css -->
+    <link href="{{ url_for('static', filename='assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="{{ url_for('static', filename='assets/css/app.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+
+    <!-- Icons -->
+    <link href="{{ url_for('static', filename='assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<!-- body start -->
+
+<body data-menu-color="light" data-sidebar="default">
+
+    <div id="app-layout">
+
+
+        <!-- Topbar Start -->
+        <div class="topbar-custom">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between">
+                    <ul class="list-unstyled topnav-menu mb-0 d-flex align-items-center">
+                        <li>
+                            <button class="button-toggle-menu nav-link">
+                                <i data-feather="menu" class="noti-icon"></i>
+                            </button>
+                        </li>
+                        <li class="d-none d-lg-block">
+                            <h5 class="mb-0">Good Morning, {{session['user_name'] }}</h5>
+                        </li>
+                    </ul>
+
+                    <ul class="list-unstyled topnav-menu mb-0 d-flex align-items-center">
+
+
+
+                        <li class="d-none d-sm-flex">
+                            <button type="button" class="btn nav-link" data-toggle="fullscreen">
+                                <i data-feather="maximize" class="align-middle fullscreen noti-icon"></i>
+                            </button>
+                        </li>
+
+
+                        <li class="dropdown notification-list topbar-dropdown">
+                            <a class="nav-link dropdown-toggle nav-user me-0" data-bs-toggle="dropdown" href="#"
+                                role="button" aria-haspopup="false" aria-expanded="false">
+                                <img src="{{ url_for('static', filename='assets/images/users/user-5.jpg') }}" alt="user-image" class="rounded-circle">
+                                <span class="pro-user-name ms-1">
+                                    {{session['user_name'] }} <i class="mdi mdi-chevron-down"></i>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
+                                <!-- item-->
+                                <div class="dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                </div>
+
+                                <!-- item-->
+                                <a href="#" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-account-circle-outline fs-16 align-middle"></i>
+                                    <span>My Account</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="#" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-lock-outline fs-16 align-middle"></i>
+                                    <span>Lock Screen</span>
+                                </a>
+
+                                <div class="dropdown-divider"></div>
+
+                                <!-- item-->
+                                <a href="/login" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-location-exit fs-16 align-middle"></i>
+                                    <span>Logout</span>
+                                </a>
+
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- end Topbar -->
+
+        <!-- Left Sidebar Start -->
+        <div class="app-sidebar-menu">
+            <div class="h-100" data-simplebar>
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+
+                    <div class="logo-box">
+                        <a href="index.html" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="{{ url_for('static', filename='assets/images/logo-sm.png') }}" alt="" height="22">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="{{ url_for('static', filename='assets/images/logo-light.png') }}" alt="" height="24">
+                            </span>
+                        </a>
+                        <a href="index.html" class="logo logo-dark">
+                            <span class="logo-sm">
+                                <img src="{{ url_for('static', filename='assets/images/logo-sm.png') }}" alt="" height="22">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="{{ url_for('static', filename='assets/images/logo-dark.png') }}" alt="" height="24">
+                            </span>
+                        </a>
+                    </div>
+
+                    <ul id="side-menu">
+
+
+
+                        <li>
+                            <a href="/">
+                                <i data-feather="home"></i>
+                                <span> Dashboard </span>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+                            <a href="#" data-bs-toggle="collapse">
+                                <i data-feather="users"></i>
+                                <span> Schedule </span>
+
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="/analytics">
+                                <i data-feather="alert-octagon"></i>
+                                <span> Analytics </span>
+
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="#sidebarIcons" data-bs-toggle="collapse">
+                                <i data-feather="award"></i>
+                                <span> Patient </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarIcons">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="/patient" class="tp-link">Patient List</a>
+                                    </li>
+                                    <li>
+                                        <a href="/addpatient" class="tp-link">Add Patient</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <a href="#" class="tp-link">
+                                <i data-feather="columns"></i>
+                                <span> Invoice(s)
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="tp-link">
+                                <i data-feather="map-pin"></i>
+                                <span> Support </span>
+                            </a>
+                        </li>
+
+
+
+
+
+                        <li>
+
+                            <a href="#sidebarIconss" data-bs-toggle="collapse">
+                                <i data-feather="package"></i>
+                                <span> Settings </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarIconss">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="/users" class="tp-link">Users</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+
+
+                    </ul>
+
+                </div>
+                <!-- End Sidebar -->
+
+                <div class="clearfix"></div>
+
+            </div>
+        </div>
+      
+
+        <div class="content-page">
+            <div class="content">
+
+            
+        
+                    <!-- Start Content-->
+                    <div class="container-fluid">
+
+                        <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
+                            <div class="flex-grow-1">
+                                <h4 class="fs-18 fw-semibold m-0">Patient List
+</h4>
+                            </div>
+							<a href="" class="btn btn-primary border-0"><i class="mdi mdi-plus me-1"></i>New Appointment</a>
+                        </div>
+
+                     
+
+                     
+                       
+
+                        
+                       
+                          
+
+                           
+
+
+                        <div class="row">
+                            <!-- Start Recent Order -->
+                            <div class="col-md-12">
+                                <div class="card overflow-hidden mb-0 p-2">
+                                    
+									 <div class="row m-3">
+									  <div class="col-md-4"><div class="position-relative topbar-search">
+                                    <input type="text" class="form-control bg-light bg-opacity-75 border-light ps-4" placeholder="Search...">
+									
+                                    <i class="mdi mdi-magnify fs-16 position-absolute text-muted top-50 translate-middle-y ms-2"></i>
+                                </div></div>
+								 <div class="col-md-3"><input type="date" id="simpleinput" class="form-control"></div>
+									 <div class="col-md-3"> <select class="form-control" id="example-select">
+																							<option>Select Status</option>
+																							<option>Collected</option>
+																							<option>Upcoming</option>
+																							<option>Cancelled</option>
+																							<option>Confirmed</option>
+																							<option>In-Progress	</option>
+																							
+																						</select>
+																						</div>
+									
+									 <div class="col-md-2"> <select class="form-control" id="example-select">
+																							
+																							  <option value="">Select state</option>
+																					<option value="AL">Alabama</option>
+	<option value="AK">Alaska</option>
+	<option value="AZ">Arizona</option>
+	<option value="AR">Arkansas</option>
+	<option value="CA">California</option>
+	<option value="CO">Colorado</option>
+	<option value="CT">Connecticut</option>
+	<option value="DE">Delaware</option>
+	<option value="DC">District Of Columbia</option>
+	<option value="FL">Florida</option>
+	<option value="GA">Georgia</option>
+	<option value="HI">Hawaii</option>
+	<option value="ID">Idaho</option>
+	<option value="IL">Illinois</option>
+	<option value="IN">Indiana</option>
+	<option value="IA">Iowa</option>
+	<option value="KS">Kansas</option>
+	<option value="KY">Kentucky</option>
+	<option value="LA">Louisiana</option>
+	<option value="ME">Maine</option>
+	<option value="MD">Maryland</option>
+	<option value="MA">Massachusetts</option>
+	<option value="MI">Michigan</option>
+	<option value="MN">Minnesota</option>
+	<option value="MS">Mississippi</option>
+	<option value="MO">Missouri</option>
+	<option value="MT">Montana</option>
+	<option value="NE">Nebraska</option>
+	<option value="NV">Nevada</option>
+	<option value="NH">New Hampshire</option>
+	<option value="NJ">New Jersey</option>
+	<option value="NM">New Mexico</option>
+	<option value="NY">New York</option>
+	<option value="NC">North Carolina</option>
+	<option value="ND">North Dakota</option>
+	<option value="OH">Ohio</option>
+	<option value="OK">Oklahoma</option>
+	<option value="OR">Oregon</option>
+	<option value="PA">Pennsylvania</option>
+	<option value="RI">Rhode Island</option>
+	<option value="SC">South Carolina</option>
+	<option value="SD">South Dakota</option>
+	<option value="TN">Tennessee</option>
+	<option value="TX">Texas</option>
+	<option value="UT">Utah</option>
+	<option value="VT">Vermont</option>
+	<option value="VA">Virginia</option>
+	<option value="WA">Washington</option>
+	<option value="WV">West Virginia</option>
+	<option value="WI">Wisconsin</option>
+	<option value="WY">Wyoming</option>
+																							</select></div>
+									 </div>
+
+                                    <div class="card-body p-0">
+                                        <div class="table-responsive">
+                                            <table class="table table-traffic mb-0">
+
+                                                <thead>
+                                                    <tr>
+                                                        <th>Order ID</th>
+                                                        <th>Customer Name</th>
+                                                        <th>Appointment Date/Time</th>
+                                                       
+                                                        <th>Status</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+
+                                                <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="text-muted">#3413</a>
+                                                    </td>
+                                                    <td class="d-flex align-items-center">
+                                                        <img src="{{ url_for('static', filename='assets/images/users/user-12.jpg') }}" class="avatar avatar-sm rounded-circle me-3" />
+                                                        <div>
+                                                            <p class="mb-0 fw-medium fs-14">Richard Dom</p>
+                                                            <p class="text-muted fs-13 mb-0">richard@api.com</p>
+                                                        </div>
+                                                    </td>
+                                                    
+                                                   
+                                                    <td>
+                                                        <p class="mb-0">August 18, 2023</p>
+                                                    </td>
+                                                    <td>
+                                                        <span class="badge bg-black-subtle text-white fw-semibold">Collected</span>
+                                                    </td>
+                                                    <td>                                                       
+                                                        <a aria-label="anchor" class="btn btn-sm bg-primary-subtle me-1" data-bs-toggle="tooltip" data-bs-original-title="Edit">
+                                                            <i class="mdi mdi-pencil-outline fs-14 text-primary"></i>
+                                                        </a>
+                                                        <a href="/cancellation" class="btn btn-sm bg-danger-subtle" data-bs-toggle="tooltip" data-bs-original-title="Cancel">
+                                                            <i class="mdi mdi-delete fs-14 text-danger"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+											
+												 <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="text-muted">#2413</a>
+                                                    </td>
+                                                    <td class="d-flex align-items-center">
+                                                        <img src="{{ url_for('static', filename='assets/images/users/user-12.jpg') }}" class="avatar avatar-sm rounded-circle me-3" />
+                                                        <div>
+                                                            <p class="mb-0 fw-medium fs-14">James Dom</p>
+                                                            <p class="text-muted fs-13 mb-0">richard@api.com</p>
+                                                        </div>
+                                                    </td>
+                                                    
+                                                   
+                                                    <td>
+                                                        <p class="mb-0">Sep 18, 2024 (8pm-10pm)</p>
+                                                    </td>
+                                                    <td>
+                                                        <span class="badge bg-primary-subtle text-primary fw-semibold">Upcoming</span>
+                                                    </td>
+                                                    <td>                                                       
+                                                        <a aria-label="anchor" class="btn btn-sm bg-primary-subtle me-1" data-bs-toggle="tooltip" data-bs-original-title="Edit">
+                                                            <i class="mdi mdi-pencil-outline fs-14 text-primary"></i>
+                                                        </a>
+                                                        <a href="/cancellation" class="btn btn-sm bg-danger-subtle" data-bs-toggle="tooltip" data-bs-original-title="Cancel">
+                                                            <i class="mdi mdi-delete fs-14 text-danger"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+												 <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="text-muted">#3413</a>
+                                                    </td>
+                                                    <td class="d-flex align-items-center">
+                                                        <img src="{{ url_for('static', filename='assets/images/users/user-12.jpg') }}" class="avatar avatar-sm rounded-circle me-3" />
+                                                        <div>
+                                                            <p class="mb-0 fw-medium fs-14">Bruce Dom</p>
+                                                            <p class="text-muted fs-13 mb-0">richard@api.com</p>
+                                                        </div>
+                                                    </td>
+                                                    
+                                                   
+                                                    <td>
+                                                        <p class="mb-0">Dec 18, 2024 (8pm-10pm)</p>
+                                                    </td>
+                                                    <td>
+                                                        <span class="badge bg-gray-subtle text-white fw-semibold">Cancelled</span>
+                                                    </td>
+                                                    <td>                                                       
+                                                        <a aria-label="anchor" class="btn btn-sm bg-primary-subtle me-1" data-bs-toggle="tooltip" data-bs-original-title="Edit">
+                                                            <i class="mdi mdi-pencil-outline fs-14 text-primary"></i>
+                                                        </a>
+                                                        <a href="/cancellation" aria-label="anchor" class="btn btn-sm bg-danger-subtle" data-bs-toggle="tooltip" data-bs-original-title="Cancel">
+                                                            <i class="mdi mdi-delete fs-14 text-danger"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+												 <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="text-muted">#3413</a>
+                                                    </td>
+                                                    <td class="d-flex align-items-center">
+                                                        <img src="{{ url_for('static', filename='assets/images/users/user-12.jpg') }}" class="avatar avatar-sm rounded-circle me-3" />
+                                                        <div>
+                                                            <p class="mb-0 fw-medium fs-14">Richard Dom</p>
+                                                            <p class="text-muted fs-13 mb-0">richard@api.com</p>
+                                                        </div>
+                                                    </td>
+                                                    
+                                                   
+                                                    <td>
+                                                        <p class="mb-0">Sep 18, 2024 (8pm-10pm)</p>
+                                                    </td>
+                                                    <td>
+                                                        <span class="badge bg-warning text-black fw-semibold">Confirmed</span>
+                                                    </td>
+                                                    <td>                                                       
+                                                        <a aria-label="anchor" class="btn btn-sm bg-primary-subtle me-1" data-bs-toggle="tooltip" data-bs-original-title="Edit">
+                                                            <i class="mdi mdi-pencil-outline fs-14 text-primary"></i>
+                                                        </a>
+                                                        <a href="/cancellation" class="btn btn-sm bg-danger-subtle" data-bs-toggle="tooltip" data-bs-original-title="Cancel">
+                                                            <i class="mdi mdi-delete fs-14 text-danger"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+												 <tr>
+                                                    <td>
+                                                        <a href="javascript:void(0);" class="text-muted">#3323</a>
+                                                    </td>
+                                                    <td class="d-flex align-items-center">
+                                                        <img src="{{ url_for('static', filename='assets/images/users/user-12.jpg') }}" class="avatar avatar-sm rounded-circle me-3" />
+                                                        <div>
+                                                            <p class="mb-0 fw-medium fs-14">Adam Dom</p>
+                                                            <p class="text-muted fs-13 mb-0">richard@api.com</p>
+                                                        </div>
+                                                    </td>
+                                                    
+                                                   
+                                                    <td>
+                                                        <p class="mb-0">Sep 18, 2024 (6pm-8pm)</p>
+                                                    </td>
+                                                    <td>
+                                                        <span class="badge bg-danger text-white fw-semibold">In-Progress</span>
+                                                    </td>
+                                                    <td>                                                       
+                                                        <a aria-label="anchor" class="btn btn-sm bg-primary-subtle me-1" data-bs-toggle="tooltip" data-bs-original-title="Edit">
+                                                            <i class="mdi mdi-pencil-outline fs-14 text-primary"></i>
+                                                        </a>
+                                                        <a href="/cancellation" class="btn btn-sm bg-danger-subtle" data-bs-toggle="tooltip" data-bs-original-title="Cancel">
+                                                            <i class="mdi mdi-delete fs-14 text-danger"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+
+                                               
+                                            </table>
+                                        </div>    
+                                    </div>
+
+                                    <div class="card-footer py-0 border-top">
+                                        <div class="row align-items-center">
+                                            <div class="col-sm">
+                                                <div class="text-block text-center text-sm-start">
+                                                    <span class="fw-medium">1 of 3</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-auto mt-3 mt-sm-0">
+                                                <div class="pagination gap-2 justify-content-center py-3 ps-0 pe-3">
+                                                    <ul class="pagination mb-0">
+                                                        <li class="page-item disabled"> 
+                                                            <a class="page-link me-2 rounded-2" href="javascript:void(0);"> Prev </a> 
+                                                        </li>
+                                                        <li class="page-item active"> 
+                                                            <a class="page-link rounded-2 me-2" href="#" data-i="1" data-page="5">1</a>
+                                                        </li>
+                                                        <li class="page-item">
+                                                            <a class="page-link me-2 rounded-2" href="#" data-i="2" data-page="5">2</a>
+                                                        </li>
+                                                        <li class="page-item">
+                                                            <a class="page-link text-primary rounded-2" href="javascript:void(0);"> next </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Recent Order -->
+                        </div>
+
+                    </div> <!-- container-fluid -->
+                </div> <!-- content -->
+
+
+            </div> <!-- content -->
+
+
+        </div>
+    </div>
+    <!-- Vendor JS -->
+    <script src="{{ url_for('static', filename='assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/feather-icons/feather.min.js') }}"></script>
+
+    <!-- Datatables JS -->
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-keytable-bs5/js/keyTable.bootstrap5.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-select-bs5/js/select.bootstrap5.min.js') }}"></script>
+
+    <!-- Datatable Demo App JS -->
+    <script src="{{ url_for('static', filename='assets/js/pages/datatable.init.js') }}"></script>
+
+    <!-- Apexcharts JS -->
+    <script src="{{ url_for('static', filename='assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="https://apexcharts.com/samples/assets/stock-prices.js) }}"></script>
+
+    <!-- Widgets Init JS -->
+    <script src="{{ url_for('static', filename='assets/js/pages/analytics-dashboard.init.js') }}"></script>
+
+    <!-- App JS -->
+    <script src="{{ url_for('static', filename='assets/js/app.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Elite Lab Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Elite Lab Solutions" />
+    <meta name="author" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/images/favicon.ico') }}">
+
+    <!-- App css -->
+    <link href="{{ url_for('static', filename='assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="{{ url_for('static', filename='assets/css/app.css') }}" rel="stylesheet" type="text/css" id="app-style" />
+
+    <!-- Icons -->
+    <link href="{{ url_for('static', filename='assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<!-- body start -->
+
+<body data-menu-color="light" data-sidebar="default">
+
+    <div id="app-layout">
+
+
+        <!-- Topbar Start -->
+        <div class="topbar-custom">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between">
+                    <ul class="list-unstyled topnav-menu mb-0 d-flex align-items-center">
+                        <li>
+                            <button class="button-toggle-menu nav-link">
+                                <i data-feather="menu" class="noti-icon"></i>
+                            </button>
+                        </li>
+                        <li class="d-none d-lg-block">
+                            <h5 class="mb-0">Good Morning, {{session['user_name'] }}</h5>
+                        </li>
+                    </ul>
+
+                    <ul class="list-unstyled topnav-menu mb-0 d-flex align-items-center">
+
+
+
+                        <li class="d-none d-sm-flex">
+                            <button type="button" class="btn nav-link" data-toggle="fullscreen">
+                                <i data-feather="maximize" class="align-middle fullscreen noti-icon"></i>
+                            </button>
+                        </li>
+
+
+                        <li class="dropdown notification-list topbar-dropdown">
+                            <a class="nav-link dropdown-toggle nav-user me-0" data-bs-toggle="dropdown" href="#"
+                                role="button" aria-haspopup="false" aria-expanded="false">
+                                <img src="{{ url_for('static', filename='assets/images/users/user-5.jpg') }}" alt="user-image" class="rounded-circle">
+                                <span class="pro-user-name ms-1">
+                                    {{session['user_name'] }} <i class="mdi mdi-chevron-down"></i>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
+                                <!-- item-->
+                                <div class="dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome !</h6>
+                                </div>
+
+                                <!-- item-->
+                                <a href="#" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-account-circle-outline fs-16 align-middle"></i>
+                                    <span>My Account</span>
+                                </a>
+
+                                <!-- item-->
+                                <a href="#" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-lock-outline fs-16 align-middle"></i>
+                                    <span>Lock Screen</span>
+                                </a>
+
+                                <div class="dropdown-divider"></div>
+
+                                <!-- item-->
+                                <a href="/login" class="dropdown-item notify-item">
+                                    <i class="mdi mdi-location-exit fs-16 align-middle"></i>
+                                    <span>Logout</span>
+                                </a>
+
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- end Topbar -->
+
+        <!-- Left Sidebar Start -->
+        <div class="app-sidebar-menu">
+            <div class="h-100" data-simplebar>
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+
+                    <div class="logo-box">
+                        <a href="index.html" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="{{ url_for('static', filename='assets/images/logo-sm.png') }}" alt="" height="22">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="{{ url_for('static', filename='assets/images/logo-light.png') }}" alt="" height="24">
+                            </span>
+                        </a>
+                        <a href="index.html" class="logo logo-dark">
+                            <span class="logo-sm">
+                                <img src="{{ url_for('static', filename='assets/images/logo-sm.png') }}" alt="" height="22">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="{{ url_for('static', filename='assets/images/logo-dark.png') }}" alt="" height="24">
+                            </span>
+                        </a>
+                    </div>
+
+                    <ul id="side-menu">
+
+
+
+                        <li>
+                            <a href="/">
+                                <i data-feather="home"></i>
+                                <span> Dashboard </span>
+
+                            </a>
+
+                        </li>
+
+
+                        <li>
+                            <a href="#" data-bs-toggle="collapse">
+                                <i data-feather="users"></i>
+                                <span> Schedule </span>
+
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="/analytics">
+                                <i data-feather="alert-octagon"></i>
+                                <span> Analytics </span>
+
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="#sidebarIcons" data-bs-toggle="collapse">
+                                <i data-feather="award"></i>
+                                <span> Patient </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarIcons">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="/patient" class="tp-link">Patient List</a>
+                                    </li>
+                                    <li>
+                                        <a href="/addpatient" class="tp-link">Add Patient</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+                        <li>
+                            <a href="#" class="tp-link">
+                                <i data-feather="columns"></i>
+                                <span> Invoice(s)
+                                </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="tp-link">
+                                <i data-feather="map-pin"></i>
+                                <span> Support </span>
+                            </a>
+                        </li>
+
+
+
+
+
+                        <li>
+
+                            <a href="#sidebarIconss" data-bs-toggle="collapse">
+                                <i data-feather="package"></i>
+                                <span> Settings </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarIconss">
+                                <ul class="nav-second-level">
+                                    <li>
+                                        <a href="/users" class="tp-link">Users</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </li>
+
+
+
+                    </ul>
+
+                </div>
+                <!-- End Sidebar -->
+
+                <div class="clearfix"></div>
+
+            </div>
+        </div>
+
+
+        <div class="content-page">
+            <div class="content">
+
+                <div class="container-fluid">
+
+                    <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
+                        <div class="flex-grow-1">
+                            <h4 class="fs-18 fw-semibold m-0">Book New Appointment</h4>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-7">
+
+                            <div class="card-body">
+                                <div class="mb-3">
+                                    <h3>Find or Create New Patient</h3>
+                                    <label for="simpleinput" class="form-label">If they’ve been booked before you can
+                                        search them by name, email or phone
+                                    </label>
+                                    <div class="position-relative topbar-search">
+                                        <input type="text" class="form-control bg-light bg-opacity-75 border-light ps-4"
+                                            placeholder="Search..." onkeyup="showResult(this.value)">
+                                        <div id="livesearch"></div>
+                                        <i
+                                            class="mdi mdi-magnify fs-16 position-absolute text-muted top-50 translate-middle-y ms-2"></i>
+                                    </div>
+                                </div>
+                                <!--        <ul class="nav nav-pills nav-justified bg-light" role="tablist">
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link active" data-bs-toggle="tab" href="#navpills2-home" role="tab">
+                                                <span class="d-block d-sm-none"><i class="mdi mdi-home-account"></i></span>
+                                                <span class="d-none d-sm-block">Patient’s Home</span> 
+                                            </a>
+                                        </li>
+                                        <li class="nav-item" role="presentation">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#navpills2-profile" role="tab">
+                                                <span class="d-block d-sm-none"><i class="mdi mdi-account-outline"></i></span>
+                                                <span class="d-none d-sm-block">In Office Collection</span> 
+                                            </a>2
+                                        </li>
+                                       
+                                    </ul> -->
+
+                                <div class="tab-content p-3 text-muted">
+                                    <div class="tab-pane active show" id="navpills2-home" role="tabpanel">
+
+                                        <div class="card-body">
+
+
+
+
+                                            <div class="accordion" id="accordionExample">
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingOne2">
+                                                        <button class="accordion-button fw-medium" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapseOne2"
+                                                            aria-expanded="true" aria-controls="collapseOne2">
+                                                            <div
+                                                                class="bg-primary rounded-circle widget-size text-center m-1">
+                                                                <span class="white"> 1 </span>
+                                                            </div>
+                                                            Appointment Location
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseOne2" class="accordion-collapse collapse show"
+                                                        aria-labelledby="headingOne2"
+                                                        data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
+                                                            <form>
+                                                                <div class="mb-3">
+                                                                    <label for="simpleinput"
+                                                                        class="form-label">Address</label>
+                                                                    <input type="text" id="simpleinput"
+                                                                        class="form-control">
+                                                                </div>
+
+
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Next</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingTwo">
+                                                        <button class="accordion-button fw-medium collapsed m-1"
+                                                            type="button" data-bs-toggle="collapse"
+                                                            data-bs-target="#collapseTwo" aria-expanded="false"
+                                                            aria-controls="collapseTwo">
+                                                            <div
+                                                                class="bg-primary rounded-circle widget-size text-center m-1">
+                                                                <span class="white"> 2 </span>
+                                                            </div> Date & Time
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseTwo" class="accordion-collapse collapse"
+                                                        aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
+                                                            <form>
+                                                                <div class="mb-3">
+                                                                    <label for="simpleinput" class="form-label">Date of
+                                                                        Appointment</label>
+                                                                    <input type="date" id="simpleinput"
+                                                                        class="form-control">
+
+                                                                </div>
+
+
+
+                                                                <div class="mb-3">
+                                                                    <label for="simpleinput"
+                                                                        class="form-label">Available Time</label>
+
+                                                                    <div class="row p-1">
+                                                                        <div class="col-xl-6">
+
+                                                                            <ul class="list-group">
+                                                                                <li class="list-group-item">
+                                                                                    <input class="form-check-input me-1"
+                                                                                        type="radio"
+                                                                                        name="listGroupRadio" value=""
+                                                                                        id="firstRadio" checked>
+                                                                                    <label class="form-check-label"
+                                                                                        for="firstRadio">1pm -
+                                                                                        3pm</label>
+                                                                                </li>
+
+
+
+                                                                            </ul>
+                                                                        </div>
+
+
+                                                                        <div class="col-6">
+                                                                            <ul class="list-group">
+                                                                                <li class="list-group-item">
+                                                                                    <input class="form-check-input me-1"
+                                                                                        type="radio"
+                                                                                        name="listGroupRadio" value=""
+                                                                                        id="firstRadio" checked>
+                                                                                    <label class="form-check-label"
+                                                                                        for="firstRadio">4pm -
+                                                                                        6pm</label>
+                                                                                </li>
+
+
+
+
+                                                                            </ul>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="row p-1">
+                                                                        <div class="col-xl-6">
+
+                                                                            <ul class="list-group">
+                                                                                <li class="list-group-item">
+                                                                                    <input class="form-check-input me-1"
+                                                                                        type="radio"
+                                                                                        name="listGroupRadio" value=""
+                                                                                        id="firstRadio" checked>
+                                                                                    <label class="form-check-label"
+                                                                                        for="firstRadio">9pm -
+                                                                                        11pm</label>
+                                                                                </li>
+
+
+
+                                                                            </ul>
+                                                                        </div>
+
+
+                                                                        <div class="col-6">
+                                                                            <ul class="list-group">
+                                                                                <li class="list-group-item">
+                                                                                    <input class="form-check-input me-1"
+                                                                                        type="radio"
+                                                                                        name="listGroupRadio" value=""
+                                                                                        id="firstRadio" checked>
+                                                                                    <label class="form-check-label"
+                                                                                        for="firstRadio">10pm -
+                                                                                        12am</label>
+                                                                                </li>
+
+
+
+
+                                                                            </ul>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+
+
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Next</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingOne">
+                                                        <button class="accordion-button fw-medium" type="button"
+                                                            data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                            aria-expanded="true" aria-controls="collapseOne">
+                                                            <div
+                                                                class="bg-primary rounded-circle widget-size text-center m-1">
+                                                                <span class="white"> 3 </span>
+                                                            </div>
+                                                            Patient Information
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseOne" class="accordion-collapse collapse"
+                                                        aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
+                                                            <form>
+
+
+                                                                <div class="mb-3">
+                                                                    <label for="simpleinput" class="form-label">Patient
+                                                                        Name</label>
+                                                                    <input type="text" id="simpleinput"
+                                                                        class="form-control">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="simpleinput" class="form-label">Date of
+                                                                        Birth</label>
+                                                                    <input type="date" id="simpleinput"
+                                                                        class="form-control">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="simpleinput"
+                                                                        class="form-label">Email</label>
+                                                                    <input type="text" id="simpleinput"
+                                                                        class="form-control">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="simpleinput" class="form-label">Phone
+                                                                        Number</label>
+                                                                    <input type="number" id="simpleinput"
+                                                                        class="form-control">
+                                                                </div>
+
+                                                                <div class="mb-3">
+                                                                    <label for="simpleinput"
+                                                                        class="form-label">Sex</label>
+
+                                                                    <select class="form-control" id="example-select">
+                                                                        <option>Male</option>
+                                                                        <option>Female</option>
+
+                                                                    </select>
+
+                                                                </div>
+
+                                                                <div class="mb-3">
+                                                                    <label for="simpleinput" class="form-label">External
+                                                                        Id (optional)</label>
+                                                                    <input type="number" id="simpleinput"
+                                                                        class="form-control">
+                                                                </div>
+
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Next</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingThree">
+                                                        <button class="accordion-button fw-medium collapsed m-1"
+                                                            type="button" data-bs-toggle="collapse"
+                                                            data-bs-target="#collapseThree" aria-expanded="false"
+                                                            aria-controls="collapseThree">
+                                                            <div
+                                                                class="bg-primary rounded-circle widget-size text-center m-1">
+                                                                <span class="white"> 4 </span>
+                                                            </div> Lab Request & Insurance
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseThree" class="accordion-collapse collapse"
+                                                        aria-labelledby="headingThree"
+                                                        data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
+
+                                                            <div class="mb-3">
+                                                                <label for="formFileSm" class="form-label">Upload Lab
+                                                                    order or kit instructions *</label>
+                                                                <input class="form-control form-control-sm"
+                                                                    id="formFileSm" type="file" required>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="simpleinput" class="form-label">Select
+                                                                    shipping courier </label>
+
+                                                                <select class="form-control" id="example-select">
+                                                                    <option>Select your Shipping</option>
+                                                                    <option>FedEx</option>
+                                                                    <option>UPS</option>
+                                                                    <option>USPS</option>
+                                                                </select>
+
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="formFileSm" class="form-label">Provide
+                                                                    Tracking Number</label>
+                                                                <input type="text" id="simpleinput"
+                                                                    class="form-control">
+                                                            </div>
+                                                            <!-- Nav tabs -->
+
+
+                                                            <div class="mb-3">
+                                                                <input type="checkbox" id="check" /> Insurance not
+                                                                required </br>
+                                                                <label for="formFileSm" class="form-label">Insurance
+                                                                    Front & Back*</label>
+                                                                <input class="form-control form-control-sm"
+                                                                    id="formFileSm" type="file" required>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">Next</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingFour">
+                                                        <button class="accordion-button fw-medium collapsed m-1"
+                                                            type="button" data-bs-toggle="collapse"
+                                                            data-bs-target="#collapseFour" aria-expanded="false"
+                                                            aria-controls="collapseFour">
+                                                            <div
+                                                                class="bg-primary rounded-circle widget-size text-center m-1">
+                                                                <span class="white">5 </span>
+                                                            </div> Additional Info & Submit
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseFour" class="accordion-collapse collapse"
+                                                        aria-labelledby="headingFour"
+                                                        data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
+                                                            <div class="mb-3">
+                                                                <label for="simpleinput" class="form-label">Parking &
+                                                                    Entry</label>
+                                                                <input type="text" id="simpleinput"
+                                                                    class="form-control">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="simpleinput" class="form-label">Special
+                                                                    Request or notes</label>
+                                                                <input type="text" id="simpleinput"
+                                                                    class="form-control">
+                                                            </div>
+
+                                                            <button type="submit" class="btn btn-primary">Complete
+                                                                Booking</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div> <!-- end card body -->
+
+                                    </div>
+                                    <!-- <div class="tab-pane" id="navpills2-profile" role="tabpanel">
+                                                  <div class="card-body">
+                                                  
+                                            <div class="accordion" id="accordionExample">
+                                                   <div class="accordion-item">
+                                                
+                                                
+                                                
+                                                    <h2 class="accordion-header" id="headingOne">
+                                                        <button class="accordion-button fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                             <div class="bg-primary rounded-circle widget-size text-center m-1">  <span class="white"> 1 </span>
+                                                                </div>
+                                                                Appointment Location
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
+                                                                <form>
+                                                                    <div class="mb-3">
+                                                                                            <label for="simpleinput" class="form-label">Address</label>
+                                                                                            <input type="text" id="simpleinput" class="form-control">
+                                                                                        </div>
+                                                                            
+                                                                               
+                                                                                <button type="submit" class="btn btn-primary">Next</button>
+                                                            </form>                                                  
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                         
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingTwo">
+                                                        <button class="accordion-button fw-medium collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                          <div class="bg-primary rounded-circle widget-size text-center m-1">  <span class="white"> 2 </span>
+                                                                </div>  Date & Time
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                       <div class="accordion-body">
+                                                                <form>
+                                                                                <div class="mb-3">
+                                                                                            <label for="simpleinput" class="form-label">Date of Appointment</label>
+                                                                                            <input type="date" id="simpleinput" class="form-control">
+                                                                                            
+                                                                                        </div>
+                                                                                        
+                                                                                        
+                                                                               
+                                                                                <div class="mb-3">
+                                                                                            <label for="simpleinput" class="form-label">Available Time</label>
+                                                                                            
+                                <div class="row p-1">
+                                <div class="col-xl-6"> 
+                                 
+                                       <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+                                                    <label class="form-check-label" for="firstRadio">4pm - 6pm</label>
+                                                </li>
+                                               
+                                        
+                                             
+                                              </ul>
+                                       </div>
+                                        
+                                   
+                                  <div class="col-6">
+                                       <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+                                                    <label class="form-check-label" for="firstRadio">1pm - 3pm</label>
+                                                </li>
+                                               
+                                        
+                                                
+                                               
+                                              </ul>
+                                       </div>
+                               
+                                </div>
+                                <div class="row p-1">
+                                            <div class="col-xl-6"> 
+                                             
+                                                   <ul class="list-group">
+                                                            <li class="list-group-item">
+                                                                <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+                                                                <label class="form-check-label" for="firstRadio">12pm - 2pm</label>
+                                                            </li>
+                                                           
+                                                    
+                                                         
+                                                          </ul>
+                                                   </div>
+                                        
+                                   
+                                      <div class="col-6">
+                                           <ul class="list-group">
+                                                    <li class="list-group-item">
+                                                        <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+                                                        <label class="form-check-label" for="firstRadio">3pm - 5pm</label>
+                                                    </li>
+                                                   
+                                            
+                                                    
+                                                   
+                                                  </ul>
+                                           </div>
+                               
+                                </div>
+                                            <div class="row p-1">
+                                            <div class="col-xl-6"> 
+                                             
+                                                   <ul class="list-group">
+                                                            <li class="list-group-item">
+                                                                <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+                                                                <label class="form-check-label" for="firstRadio">5pm - 7pm</label>
+                                                            </li>
+                                                           
+                                                    
+                                                         
+                                                          </ul>
+                                                   </div>
+                                        
+                                   
+                                      <div class="col-6">
+                                           <ul class="list-group">
+                                                    <li class="list-group-item">
+                                                        <input class="form-check-input me-1" type="radio" name="listGroupRadio" value="" id="firstRadio" checked>
+                                                        <label class="form-check-label" for="firstRadio">8pm - 10pm</label>
+                                                    </li>
+                                                   
+                                            
+                                                    
+                                                   
+                                                  </ul>
+                                           </div>
+                               
+                                </div>
+                                                                                        </div>
+                                                                                
+                                                                               
+                                                                                <button type="submit" class="btn btn-primary">Next</button>
+                                                            </form>                                                  
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                                       <div class="accordion-item">
+                                                
+                                                
+                                                
+                                                    <h2 class="accordion-header" id="headingOne3">
+                                                        <button class="accordion-button fw-medium" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
+                                                             <div class="bg-primary rounded-circle widget-size text-center m-1">  <span class="white"> 3 </span>
+                                                                </div>
+                                                                Patient Information
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseOne3" class="accordion-collapse collapse " aria-labelledby="headingOne3" data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
+                                                                <form>
+                                                                
+                                                                                <div class="mb-3">
+                                                                                            <label for="simpleinput" class="form-label">Patient Name</label>
+                                                                                            <input type="text" id="simpleinput" class="form-control">
+                                                                                        </div>
+                                                                                <div class="mb-3">
+                                                                                            <label for="simpleinput" class="form-label">Date of Birth</label>
+                                                                                            <input type="date" id="simpleinput" class="form-control">
+                                                                                        </div>
+                                                                               <div class="mb-3">
+                                                                                            <label for="simpleinput" class="form-label">Email</label>
+                                                                                            <input type="text" id="simpleinput" class="form-control">
+                                                                                        </div>
+                                                                                <div class="mb-3">
+                                                                                            <label for="simpleinput" class="form-label">Phone Number</label>
+                                                                                            <input type="number" id="simpleinput" class="form-control">
+                                                                                        </div>
+                                                                                        
+                                                                                <div class="mb-3">
+                                                                                            <label for="simpleinput" class="form-label">Sex</label>
+                                                                                            
+                                                                                            <select class="form-control" id="example-select">
+                                                                                                <option>Male</option>
+                                                                                                <option>Female</option>
+                                                                                                
+                                                                                            </select>
+                                                                                            
+                                                                                        </div>
+                                                                                <div class="mb-3">
+                                                                                            <label for="simpleinput" class="form-label">External Id (optional)</label>
+                                                                                            <input type="number" id="simpleinput" class="form-control">
+                                                                                        </div>
+                                                                               
+                                                                                <button type="submit" class="btn btn-primary">Next</button>
+                                                            </form>                                                  
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingThree">
+                                                        <button class="accordion-button fw-medium collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                           <div class="bg-primary rounded-circle widget-size text-center m-1">  <span class="white"> 4 </span>
+                                                                </div>Lab Request & Insurance
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
+                                                          
+    
+                                    
+    
+                                   
+                                    <div class="tab-content p-3 text-muted">
+                                     <div class="mb-3">
+                                                    <label for="formFileSm" class="form-label">Please upload a copy of Lab Order</label>
+                                                    <input class="form-control form-control-sm" id="formFileSm" type="file">
+                                                </div>
+                                     <div class="mb-3">
+                                         <input type="checkbox" id="check"  />	Insurance not required</br>
+                                         
+                                                    <label for="formFileSm" class="form-label">Insurance Front & Back</label>
+                                                    <input class="form-control form-control-sm" id="formFileSm" type="file">
+                                                </div>
+                                       
+                                       <button type="submit" class="btn btn-primary">Next</button>
+                                    </div>
+    
+                                                          </div>
+                                                    </div>
+                                                </div>
+                                                 <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingFour">
+                                                        <button class="accordion-button fw-medium collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                         <div class="bg-primary rounded-circle widget-size text-center m-1">  <span class="white"> 5 </span>
+                                                                </div>Additional Info & Submit
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                                        <div class="accordion-body">
+                                                                                        <div class="mb-3">
+                                                                                            <label for="simpleinput" class="form-label">Parking & Entry</label>
+                                                                                            <input type="text" id="simpleinput" class="form-control">
+                                                                                        </div>
+                                                                                        <div class="mb-3">
+                                                                                            <label for="simpleinput" class="form-label">Special Request or notes</label>
+                                                                                            <input type="text" id="simpleinput" class="form-control">
+                                                                                        </div>
+    
+                                                                        <button type="submit" class="btn btn-primary">Complete Booking</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+    
+                                        </div> <!-- end card body -->
+
+
+                                </div> -->
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div> <!-- content -->
+
+
+    </div>
+    </div>
+    <!-- Vendor JS -->
+    <script src="{{ url_for('static', filename='assets/libs/jquery/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/node-waves/waves.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/feather-icons/feather.min.js') }}"></script>
+
+    <!-- Datatables JS -->
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-keytable-bs5/js/keyTable.bootstrap5.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-select/js/dataTables.select.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/libs/datatables.net-select-bs5/js/select.bootstrap5.min.js') }}"></script>
+
+    <!-- Datatable Demo App JS -->
+    <script src="{{ url_for('static', filename='assets/js/pages/datatable.init.js') }}"></script>
+
+    <!-- Apexcharts JS -->
+    <script src="{{ url_for('static', filename='assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="https://apexcharts.com/samples/assets/stock-prices.js) }}"></script>
+
+    <!-- Widgets Init JS -->
+    <script src="{{ url_for('static', filename='assets/js/pages/analytics-dashboard.init.js') }}"></script>
+
+    <!-- App JS -->
+    <script src="{{ url_for('static', filename='assets/js/app.js') }}"></script>
+</body>
+
+</html>
